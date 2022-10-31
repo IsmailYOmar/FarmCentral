@@ -1,0 +1,154 @@
+﻿@model ST10120867_FarmCentral.Models.Employees
+@{
+    ViewBag.Title = "AddEmployee";
+}
+
+<style>
+    .Uname {
+        margin: auto;
+        font-size: 40px;
+        height: 50px;
+        width: 28%;
+        padding: 15px;
+        border-color: #84918E;
+        border-radius: 10px;
+        background-color: transparent;
+        margin: 0px 0px 5px 20px;
+        color: #84918E;
+    }
+
+    .Pass {
+        margin: auto;
+        font-size: 40px;
+        height: 50px;
+        width: 28%;
+        padding: 15px;
+        border-color: #84918E;
+        border-radius: 10px;
+        background-color: transparent;
+        margin: 0px 0px 5px 20px;
+        color: #84918E;
+    }
+
+    label {
+        font-size: 50px;
+        margin: -9px 0px 0px 10px;
+        color: #84918E;
+    }
+
+    #Register {
+        margin: -27px 4px;
+        font-size: 35px;
+        height: 45px;
+        width: 30%;
+        border-radius: 12px;
+        background-color: #C7F5DC;
+        border: solid;
+        border-width: 2px;
+        border-color: #84918E;
+    }
+
+    .Register:hover {
+        opacity: 0.8;
+    }
+
+    .addNew {
+        width: 50%;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 10px;
+        left: 470px;
+    }
+
+    .list {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 10px;
+        left: 1210px;
+    }
+
+    .listBorder {
+        height: 500px;
+        width: 600px;
+        border-style: solid;
+        border-radius: 20px;
+        border-width: 3px;
+        border-color: #84918E;
+    }
+
+    .validationMessage {
+        color: #ffaa65;
+        margin: 0px 0px 0px 20px;
+    }
+</style>
+<!--Side nav bar-->
+<div class="sidenav">
+    <div class="logo1">
+        <a href="/Home/Index">
+            <img src="~/Images/FarmCentral_Logo.png" />
+        </a>
+    </div>
+    <!--Display Logged in Users Username -->
+    <div class="Username">
+        <div class="Profile">
+        </div>
+        <h2>@Session["username"].ToString()</h2>
+    </div>
+    <!--Log user out on click -->
+    <a href=@Url.Action("Logout", "Account", "AccountController")><h3>Logout</h3></a>
+    <hr style="color:#707070; width: 281px;" />
+    <ul Class="menuLink" style="list-style-type:none;">
+        @if (Session["admin"] != null)
+        {<!--menu links change depending on users role -->
+            <li><a href="/Home/Index">Home </a></li>
+            <li><a href="/User/AddUser">Add New Farmer </a></li>
+            <li><a id="selected" href="/Employee/AddEmployee">Add New Employee </a></li>
+            <li><a href="/Employee/ViewProducts">View All Products</a></li>
+        }
+    </ul>
+</div>
+<div class="main">
+    <div class="addNew">
+        <h2>Add New Employee</h2>
+        <!--form thats passes data to controller using model -->
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                <!--Validation defined in model-->
+                <form id="register" method="get" action="login.php">
+                    <label><b>Enter Employees Full Name</b></label>
+                    @Html.EditorFor(model => model.fullName, new { htmlAttributes = new { @class = "Uname", placeholder = "Name" } })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.fullName, "", new { @class = "validationMessage" })
+                    <br />
+                    <label><b>Enter Employees Username</b></label>
+                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "Uname", placeholder = "Username" } })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "validationMessage" })
+                    <br />
+                    <label><b>Password</b></label>
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "Pass", placeholder = "Password" } })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "validationMessage" })
+                    <br />
+                    <label><b>Confirm Password</b></label>
+                    @Html.EditorFor(model => model.confirmPassword, new { htmlAttributes = new { @class = "Pass", placeholder = " Confirm Password" } })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.confirmPassword, "", new { @class = "validationMessage" })
+                    <br />
+                </form>
+                <input type="submit" class="Register" id="Register" value="Register" />
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

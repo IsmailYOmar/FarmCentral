@@ -1,0 +1,178 @@
+﻿@model IEnumerable<ST10120867_FarmCentral.Models.GetProducts>
+<!--import Grid.mvc addon package-->
+@using GridMvc.Html
+@{
+    ViewBag.Title = "ViewProducts";
+}
+<!--Gridview in ASP.NET MVC-Ashwini Verma 
+    https://www.codeproject.com/Articles/1110431/Gridview-in-ASP-NET-MVC 
+    
+    -->
+<!--Import styling and scripts for Grid.mvc-->
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/gridmvc.datepicker.css")" rel="stylesheet" />
+
+
+<!--font-family: 'dongle-bold'- custom font from google fonts-->
+<style>
+    html, body {
+        font-family: 'dongle-bold';
+    }
+
+    .Uname {
+        margin: auto;
+        font-size: 40px;
+        height: 50px;
+        width: 25%;
+        padding: 15px;
+        border-color: #84918E;
+        border-radius: 10px;
+        background-color: transparent;
+        margin: 0px 0px 5px 30px;
+        color: #84918E;
+    }
+
+    .Pass {
+        margin: auto;
+        font-size: 40px;
+        height: 50px;
+        width: 25%;
+        padding: 15px;
+        border-color: #84918E;
+        border-radius: 10px;
+        background-color: transparent;
+        margin: 0px 0px 5px 30px;
+        color: #84918E;
+    }
+
+    label {
+        font-size: 50px;
+        margin: 10px 0px 0px 30px;
+        color: #84918E;
+    }
+
+    p {
+        font-size: 24px;
+        margin-left: -310px
+    }
+
+    #Register {
+        margin: 20px 30px;
+        font-size: 35px;
+        height: 45px;
+        width: 30%;
+        border-radius: 12px;
+        background-color: #C7F5DC;
+        border: solid;
+        border-width: 2px;
+        border-color: #84918E;
+    }
+
+    .Register:hover {
+        opacity: 0.8;
+    }
+
+    .list {
+        width: 50%;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 10px;
+        left: 470px;
+    }
+
+    .sortBy {
+        height: 100%;
+        width: 50%;
+        position: fixed;
+        z-index: 1;
+        top: 10px;
+        left: 1150px;
+    }
+
+    .listBorder {
+        height: 500px;
+        width: fit-content;
+        border-style: solid;
+        border-radius: 20px;
+        border-width: 3px;
+        border-color: #84918E;
+    }
+
+    .grid-mvc {
+        width: 1200px;
+        font-size: 35px;
+        color: #84918E;
+        font-family: Dongle;
+    }
+
+        .grid-mvc a {
+            color: #00fd81;
+            text-decoration: none;
+        }
+</style>
+<!--Side nav bar-->
+<div class="sidenav">
+    <div class="logo1">
+        <a href="/Home/Index">
+            <img src="~/Images/FarmCentral_Logo.png" />
+        </a>
+    </div>
+    <!--Display Logged in Users Username -->
+    <div class="Username">
+        <div class="Profile">
+        </div>
+        <h2>@Session["username"].ToString()</h2>
+    </div>
+    <!--Log user out on click -->
+    <a href=@Url.Action("Logout", "Account", "AccountController")><h3>Logout</h3></a>
+    <script type="text/javascript">
+    </script>
+    <hr style="color:#707070; width: 281px;" />
+    <ul Class="menuLink" style="list-style-type:none;">
+        <!--menu links change depending on users role -->
+        @if (Session["admin"] != null)
+        {
+            <li><a href="/Home/Index">Home </a></li>
+            <li><a href="/User/AddUser">Add New Farmer </a></li>
+            <li><a href="/Employee/AddEmployee">Add New Employee </a></li>
+            <li><a id="selected" href="/Employee/ViewProducts">View All Products </a></li>
+        }
+        @if (Session["employee"] != null)
+        {
+            <li><a href="/Home/Index">Home </a></li>
+            <li><a href="/User/AddUser">Add New Farmer </a></li>
+            <li><a id="selected" href="/Employee/ViewProducts">View All Products</a></li>
+        }
+        <!-- Manage Controller Specific Session In ASP.NET MVC 5 -   Vithal Wadje
+                https://www.c-sharpcorner.com/UploadFile/0c1bb2/manage-controller-specific-session-in-Asp-Net-mvc-5/
+                Dec 14, 2015
+            -->
+    </ul>
+    </div>
+    <div class="main">
+        <div class="list">
+            <h2>List Of Products</h2>
+            <!--Gridview displaying all products in the database -->
+        <div class="listBorder">
+            <div>
+                @Html.Grid(Model).Columns(Columns =>
+           {
+               Columns.Add(c => c.UserName).Titled("UserID").Filterable(true).Sortable(true);
+               Columns.Add(c => c.ProductName).Titled("Product Name").Filterable(true).Sortable(true);
+               Columns.Add(c => c.ProductType).Titled("Product Type").Filterable(true).Sortable(true);
+               Columns.Add(c => c.ProductQuantity).Titled("Product Quantity").Filterable(true).Sortable(true);
+               Columns.Add(c => c.ProductPrice).Titled("Product Price").Filterable(true).Sortable(true);
+               Columns.Add(c => c.ProductDate).Titled("Product Date").Filterable(true).Sortable(true).Format("{0:dd/MM/yyyy}");
+           }).WithPaging(6).Sortable(true).Filterable(true).WithMultipleFilters()
+
+            </div>
+        </div>
+</div>
+</div>
+
+

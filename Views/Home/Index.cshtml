@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="logo">
+    <a href="/Home/Index">
+        <img src="~/Images/FarmCentral_Logo.png" />
+    </a>
+</div>
+<div id="search">
+    <input type="search" class="search" placeholder="Search"/>
+</div>
+<div id="menu">
+    <a href="/Account/Login"><img src="~/Images/shopping_cart.svg" /></a>
+    <!--if session exist link to dashboard changes depnding on role, else redirects to login page -->
+    @if (Session["admin"] != null)
+    {
+        <a href="/Employee/ViewProducts"><img src="~/Images/user_selected.svg" /></a>
+    }
+    else if (Session["employee"] != null)
+    {
+        <a href="/Employee/ViewProducts"><img src="~/Images/user_selected.svg" /></a>
+    }
+    else if (Session["user"] != null)
+    {
+        <a href="/Products/AddProduct"><img src="~/Images/user_selected.svg" /></a>
+    }
+    else
+    {
+        <a href="/Account/Login"><img src="~/Images/user_selected.svg" /></a>
+    }
+</div>
+
+<div style="display:inline-block">
+
+    <h1 class="name">
+        FARM <br />CENTRAL
+    </h1>
+    <img id="homepageImage" src="~/Images/HomePage_img.png" />
+
+</div>

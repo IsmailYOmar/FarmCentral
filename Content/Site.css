@@ -1,0 +1,264 @@
+﻿html {
+}
+
+.body-content {
+    margin: 0px;
+    padding: 0px;
+}
+
+@font-face {
+    font-family: 'dongle-bold';
+    src: url('../fonts/dongle-bold.ttf') format('truetype');
+}
+
+#BodyContent {
+    margin: 0px;
+    padding: 5px;
+}
+
+#MainContent {
+    margin: 0px;
+    padding: 5px;
+}
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    background-image: url('../images/colorful fluid linktree background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 120%;
+    font-family: 'dongle-bold';
+    font-size: 24px;
+}
+
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.logo {
+    margin-top: 35px;
+    margin-left: 105px;
+}
+.logo1 {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+.logo1 img {
+    width: 350px;
+    height: 250px;
+}
+
+    .logo img {
+        width: 350px;
+        height: 250px;
+    }
+
+.name {
+    margin-top: 205px;
+    margin-left: 285px;
+    font-family: 'dongle-bold';
+    font-size: 240px;
+    line-height: 180px;
+    color: #27A160;
+}
+
+#homepageImage {
+    margin-top: -485px;
+    margin-left: 905px;
+    width: 900px;
+    height: 550px;
+}
+
+#search {
+    margin-top: -135px;
+    margin-left: 700px;
+    background-color: #C7F5DC;
+    width: 500px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+    #search input {
+        background-color: #C7F5DC;
+        width: 500px;
+        height: 50px;
+        border-radius: 8px;
+        padding: 15px;
+        border: none;
+    }
+
+#search input:focus {
+    border: none;
+    border-style: none;
+}
+
+#menu {
+    margin-top: -50px;
+    margin-left: 1500px;
+    background-color: #C7F5DC;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+    #menu img {
+        display: inline-block;
+        margin: 0 23px;
+        padding: 10px;
+        width: 50px;
+        height: 50px;
+    }
+
+.loginBorder {
+    height: 500px;
+    width: 600px;    
+    position:fixed;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: #84918E;
+}
+
+
+.sidenav {
+    height: 90%;
+    width: 490px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px 25px 25px 0px;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 5px;
+    font-size: 35px;
+}
+
+    .sidenav h1 {
+        padding: 16px 8px 6px 16px;
+        font-size: 45px;
+        color: #27A160;
+    }
+
+    .sidenav h2 {
+        font-size: 35px;
+        color: #27A160;
+        margin-top: -53px;
+        margin-left: 85px;
+    }
+
+    .sidenav h3 {
+        font-size: 45px;
+        color: #959494;
+        font-weight: bold;
+        margin-left: 70px;
+        margin-bottom: 25px;
+    }
+    .sidenav a {
+        font-size: 40px;
+        color: #959494;
+        text-decoration: none;
+    }
+    .sidenav a:hover {
+        text-decoration: none;
+        color: #0AFC77;
+    }
+    .sidenav h3:hover {
+            text-decoration: none;
+            color: #0AFC77;
+    }
+    .sidenav .menuLink {
+        padding: 12px 8px 6px 0px;
+        text-align: left;
+        font-weight: bold;
+        text-decoration: none;
+        margin-left: 70px;
+        font-size: 40px;
+        display: block;
+    }
+    .sidenav .menuLink a {
+        font-size: 40px;
+        color: #959494;
+    }
+    .sidenav .menuLink a:hover {
+        text-decoration: none;
+        color: #0AFC77;
+    }
+    .sidenav .menuLink #selected {
+        color: #0AFC77;
+    }
+
+
+.Username {
+    background: white;
+    border-radius: 22px;
+    border-color: #0AFC77;
+    border-width: 2px;
+    border: solid;
+    height: 64px;
+    margin-top: 42px;
+    margin-left: 70px;
+    margin-bottom: 8px;
+    width: 263px;
+}
+
+.Profile {
+    background: #0AFC77;
+    border-radius: 22px;
+    border-width: 10px;
+    border: solid;
+    margin-top: -3px;
+    margin-left: -3px;
+    border-color: #0AFC77;
+    height: 64px;
+    width: 65px;
+}
+footer {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 55px;
+    position: fixed;
+    bottom: 5px;
+}
+
+.main {
+    height: 100%;
+    width: max-content;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 490px;
+    background-color: transparent;
+    overflow-x: hidden;
+    padding-top: 5px;
+    font-size: 35px;
+}
+
+    .main h2 {
+        font-size: 85px;
+        color: #0AFC77;
+        margin-top: 200px;
+        margin-bottom: 15px;
+    }
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
